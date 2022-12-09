@@ -43,7 +43,7 @@ model.predict_proba(['привет', 'иди в задницу'])
 model.steps[1][1].coef_
 model.steps[1][1].coef_.shape
 
-TOKEN = os.environ["TOKEN"]
+TOKEN = os.environ.get('TOKEN', None)
 
 
 def reply(text):
@@ -72,7 +72,7 @@ def help(update, context):
 
 def echo(update, context):
     """Echo the user message."""
-    update.message.reply_text(reply(update.message.text))
+    update.message.reply_text(update.message.text)
 
 
 def main():
@@ -89,7 +89,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, reply(echo)))
 
     updater.start_polling()
     updater.idle()
