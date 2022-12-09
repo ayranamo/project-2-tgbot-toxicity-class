@@ -101,7 +101,7 @@ def main():
     updater.start_webhook(
         listen="0.0.0.0",
         port=int(PORT),
-        url_path=TOKEN,
+        url_path='',
         webhook_url=APP_NAME + TOKEN
     )
     #updater.start_polling()
