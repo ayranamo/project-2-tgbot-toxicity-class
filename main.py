@@ -9,16 +9,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-texts = []
-labels = []
 
-PORT = int(os.environ.get('PORT', '8443'))
+TOKEN = os.environ.get('TOKEN')
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+
+texts = []
+labels = []
 
 with open('dataset.txt', 'r') as f:
     for line in f.readlines():
@@ -49,8 +50,6 @@ model.predict(['привет', 'иди в задницу'])
 model.predict_proba(['привет', 'иди в задницу'])
 model.steps[1][1].coef_
 model.steps[1][1].coef_.shape
-
-TOKEN = os.environ.get('TOKEN')
 
 def reply(text):
     if not text:
@@ -89,7 +88,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
-    # on noncommand i.e message - echo the message on Telegram
+    # echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
 
     #Start the Bot
