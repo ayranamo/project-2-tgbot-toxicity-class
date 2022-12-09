@@ -1,2 +1,2 @@
 # project-2-tgbot-toxicity-class
-Проект для курса по организации процессов в DS и ML на Stepik.org
+Проект для курса по организации процессов c DS и ML на Stepik.org
