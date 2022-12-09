@@ -58,7 +58,6 @@ def reply(text):
     proba = model.predict_proba([text])[0, 1]
     return f'Текст "{text}" - токсичный на {proba:2.2%}'
 
-
 print(reply('иди на хер'))
 print(classification_report(y_test, model.predict(X_test)))
 print(roc_auc_score(y_test, model.predict_proba(X_test)[:, 1]))
@@ -75,16 +74,12 @@ def help(update, context):
     update.message.reply_text(
         "Привет! Я чат-бот, умею определять токсичность текста, который Вы мне пришлете. Оправьте любой текст ответным сообщением.")
 
-
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(reply(update.message.text))
 
-
 def main():
     """Start the bot."""
-    APP_NAME = 'https://api.telegram.org/bot'
-
     updater = Updater(TOKEN, use_context=True)
 
     # Get the dispatcher to register handlers
@@ -98,12 +93,6 @@ def main():
     dp.add_handler(MessageHandler(Filters.text, echo))
 
     #Start the Bot
-    # updater.start_webhook(
-    #     listen="0.0.0.0",
-    #     port=int(PORT),
-    #     url_path='',
-    #     webhook_url=APP_NAME + TOKEN
-    # )
     updater.start_polling()
     updater.idle()
 
