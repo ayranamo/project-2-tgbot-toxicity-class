@@ -83,7 +83,7 @@ def echo(update, context):
 
 def main():
     """Start the bot."""
-    APP_NAME = 'https://project-2-tgbot-toxicity-class.herokuapp.com/'
+    APP_NAME = 'https://api.telegram.org/bot'
 
     updater = Updater(TOKEN, use_context=True)
 
