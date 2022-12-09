@@ -50,10 +50,7 @@ model.predict_proba(['привет', 'иди в задницу'])
 model.steps[1][1].coef_
 model.steps[1][1].coef_.shape
 
-TOKEN = os.environ.get('TOKEN', None)
-
-print(TOKEN)
-
+TOKEN = os.environ.get('TOKEN')
 
 def reply(text):
     if not text:
@@ -100,16 +97,15 @@ def main():
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
 
-    # #Start the Bot
-    # updater.start_webhook(
-    #     listen="0.0.0.0",
-    #     port=int(PORT),
-    #     url_path=TOKEN,
-    #     webhook_url=APP_NAME + TOKEN
-    # )
-    updater.start_polling()
+    #Start the Bot
+    updater.start_webhook(
+        listen="0.0.0.0",
+        port=int(PORT),
+        url_path=TOKEN,
+        webhook_url=APP_NAME + TOKEN
+    )
+    #updater.start_polling()
     updater.idle()
-
 
 if __name__ == '__main__':
     main()
