@@ -98,13 +98,13 @@ def main():
     dp.add_handler(MessageHandler(Filters.text, echo))
 
     #Start the Bot
-    updater.start_webhook(
-        listen="0.0.0.0",
-        port=int(PORT),
-        url_path='',
-        webhook_url=APP_NAME + TOKEN
-    )
-    #updater.start_polling()
+    # updater.start_webhook(
+    #     listen="0.0.0.0",
+    #     port=int(PORT),
+    #     url_path='',
+    #     webhook_url=APP_NAME + TOKEN
+    # )
+    updater.start_polling()
     updater.idle()
 
 if __name__ == '__main__':
