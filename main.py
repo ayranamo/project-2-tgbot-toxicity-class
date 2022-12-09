@@ -1,4 +1,5 @@
 import os
+import logging
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -11,7 +12,13 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 texts = []
 labels = []
 
-PORT = int(os.environ.get('PORT', 8000))
+PORT = int(os.environ.get('PORT', '8443'))
+
+# Enable logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
 
 with open('dataset.txt', 'r') as f:
     for line in f.readlines():
@@ -45,6 +52,8 @@ model.steps[1][1].coef_.shape
 
 TOKEN = os.environ.get('TOKEN', None)
 
+print(TOKEN)
+
 
 def reply(text):
     if not text:
@@ -72,7 +81,7 @@ def help(update, context):
 
 def echo(update, context):
     """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    update.message.reply_text(reply(update.message.text))
 
 
 def main():
@@ -89,8 +98,15 @@ def main():
     dp.add_handler(CommandHandler("help", help))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, reply(echo)))
+    dp.add_handler(MessageHandler(Filters.text, echo))
 
+    # #Start the Bot
+    # updater.start_webhook(
+    #     listen="0.0.0.0",
+    #     port=int(PORT),
+    #     url_path=TOKEN,
+    #     webhook_url=APP_NAME + TOKEN
+    # )
     updater.start_polling()
     updater.idle()
 
