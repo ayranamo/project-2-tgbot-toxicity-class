@@ -31,6 +31,10 @@ pip3 install -r requirements.txt
 - Введите имя нового бота и его юзернейм
 - Скопируйте и вставьте в ячейку ниже токен, который отправит вам BotFather. Это ключ от управления свежесозданным ботом.
 
+4. Склонируйте репозиторий `git clone https://github.com/ayranamo/project-2-tgbot-toxicity-class.git`
+
+5. Перейдите в папку `cd project-2-tgbot-toxicity-class`
+
 4. Введите команду в командой строке:
 ~~~
 export TOKEN="<Введите сюда свой telegram-токен>"
