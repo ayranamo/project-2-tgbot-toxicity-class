@@ -41,6 +41,7 @@ export TOKEN="<Введите сюда свой telegram-токен>"
 python3 main.py
 ~~~
 
+6. Тот же проект вы можете попробовать реализовать в Google Colab. Пример кода — [по ссылке](https://colab.research.google.com/drive/1OZslsgZBu20tTxWTdmRfOUFVJ3Vq-Sh8#scrollTo=7hluDNbNTHY5).
 
 ### Благодарности в помощи в создании данного проекта:
 1. Давиду Дале, NLP-исследователю https://daviddale.ru/
