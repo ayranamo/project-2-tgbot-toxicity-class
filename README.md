@@ -7,7 +7,8 @@
 
 В блокноте dataset.txt находится модель для определения степени токсичности текстовых комментариев.
 
-<img src="https://github.com/ayranamo/project-2-tgbot-toxicity-class/blob/main/examples/example_1.png" width="650" height="500">
+Пример работы с ботом:
+<img src="https://github.com/ayranamo/project-2-tgbot-toxicity-class/blob/main/examples/example_1.png" width="500" height="600">
 
 # Инструкция
 
